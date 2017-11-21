@@ -1,0 +1,3 @@
+rdflib
+thirdparty/pyodbc/dist/*.whl
+thirdparty/virtuoso-python/dist/*.whl
