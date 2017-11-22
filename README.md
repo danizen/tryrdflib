@@ -33,23 +33,23 @@ Eventually, this will probably involve maintaining a trie that maps from the IRI
 
 ## How to build and test
 
-There is a support package to link rdflib and Virtuoso using pyodbc.  It
-requires modifications to pyodbc because SPARQL queries return IRIs and string
-literals with a language code.  We need to distinguish these to be right.
+There is a package required to link rdflib and Virtuoso using pyodbc.  It
+requires modifications to pyodbc because SPARQL queries return IRIs and special
+literals containing additional semantics (a language code).  We need to
+distinguish these to be right.  There may also be blank nodes in the result; not
+with MeSH RDF, but with other Semantic datasets.
 
-There may even be blank nodes in results - which are not strings either.
-
-So, both of these repositories are included as sub-modules.
-The way I expect this to work:
+So, virtuoso-python is a git sub-module.   
 
 
 ```
-(cd thirdparty; mkdir wheels)
-(cd thirdparty/virtuoso-python; ./setup.py bdist_wheel; cp dist/*.whl ../wheels)
-(cd thirdparty/pyodbc; ./setup.py bdist_wheel; cp dist/*.whl ../wheels)
-pip install -f thirdparty/wheels -r requirements.txt
+cd thirdparty/virtuoso-python
+pip install -r requirements.txt
+./setup.py bdist_wheel
+pip install dist/*.whl
+cd ../..
+pip install -r requirements_extra.txt
 ```
 
-I'll do Linux first; Windows has some challenges here.
 
 
