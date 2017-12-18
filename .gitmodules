@@ -1,3 +1,6 @@
 [submodule "thirdparty/virtuoso-python"]
 	path = thirdparty/virtuoso-python
 	url = git@github.com:maparent/virtuoso-python.git
+[submodule "thirdparty/pyodbc"]
+	path = thirdparty/pyodbc
+	url = git@github.com:maparent/pyodbc.git
